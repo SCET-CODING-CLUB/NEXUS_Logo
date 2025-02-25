@@ -7,7 +7,7 @@
 #define SCALE  15
 #define C_X (WIDTH/2)
 #define C_Y (HEIGHT/2)
-#define K 3.0
+#define K 1.0
 
 /*
     ->simply put, our axes in a computer are different then in math
@@ -71,7 +71,7 @@ int main(void){
      
 
         if (xScreen >= 0 && xScreen < WIDTH && yScreen >= 0 && yScreen < HEIGHT) {
-            buffer[yScreen][xScreen] = '*';
+            buffer[yScreen][xScreen] = 'N';
         }
     }
     
