@@ -7,7 +7,7 @@
 #define SCALE  15
 #define C_X (WIDTH/2)
 #define C_Y (HEIGHT/2)
-#define K 2.0
+#define K 3.0
 
 /*
     ->simply put, our axes in a computer are different then in math
@@ -66,8 +66,8 @@ int main(void){
         int yScreen = C_Y - y2D;
 
         //debugging 101
-        printf("x: %.2f, y: %.2f, z: %.2f -> x2D: %d, y2D: %d -> xScreen: %d, yScreen: %d\n",
-            x, y, z, x2D, y2D, xScreen, yScreen);
+        /*printf("x: %.2f, y: %.2f, z: %.2f -> x2D: %d, y2D: %d -> xScreen: %d, yScreen: %d\n",
+            x, y, z, x2D, y2D, xScreen, yScreen);*/
      
 
         if (xScreen >= 0 && xScreen < WIDTH && yScreen >= 0 && yScreen < HEIGHT) {
