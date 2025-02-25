@@ -4,9 +4,10 @@
 
 #define HEIGHT 20
 #define WIDTH  40
+#define SCALE  15
 #define C_X (WIDTH/2)
 #define C_Y (HEIGHT/2)
-#define K 3.0
+#define K 2.0
 
 /*
     ->simply put, our axes in a computer are different then in math
@@ -45,12 +46,12 @@ int main(void){
     char buffer[HEIGHT][WIDTH];
     clr(buffer);
      //our 3D points
-    float points[4][3]= {
+     float points[4][3]= {
         {1,1,3},
-        {2,2,3},
-        {3,3,3},
-        {4,4,3}
-    };
+        {1,2,3},
+        {2,1,3},
+        {2,2,3}
+    };    
      //simply project each point & place in buffer
     for (int i=0;i<4;i++){
         float x = points[i][0];
@@ -58,17 +59,24 @@ int main(void){
         float z = points[i][2];
 
         float D = 1 / (z + K);
-        int x2D = (int)(x * D * 10);
-        int y2D = (int)(y * D * 10);
+        int x2D = (int)(x * D * SCALE);
+        int y2D = (int)(y * D * SCALE);
 
         int xScreen = C_X + x2D;
         int yScreen = C_Y - y2D;
+
+        //debugging 101
+        printf("x: %.2f, y: %.2f, z: %.2f -> x2D: %d, y2D: %d -> xScreen: %d, yScreen: %d\n",
+            x, y, z, x2D, y2D, xScreen, yScreen);
+     
 
         if (xScreen >= 0 && xScreen < WIDTH && yScreen >= 0 && yScreen < HEIGHT) {
             buffer[yScreen][xScreen] = '*';
         }
     }
+    
     display(buffer);
+    
     return 0;
 }
 
