@@ -68,7 +68,8 @@ int main(void){
             buffer[yScreen][xScreen] = '*';
         }
     }
-    
+    display(buffer);
+    return 0;
 }
 
 
