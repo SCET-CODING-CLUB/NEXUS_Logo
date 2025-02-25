@@ -41,9 +41,33 @@ void display(char buffer[HEIGHT][WIDTH]){;
 goes row by row and puts chars on the array we made in clr
 */
 
-
-
 int main(void){
+    char buffer[HEIGHT][WIDTH];
+    clr(buffer);
+     //our 3D points
+    float points[4][3]= {
+        {1,1,3},
+        {2,2,3},
+        {3,3,3},
+        {4,4,3}
+    };
+     //simply project each point & place in buffer
+    for (int i=0;i<4;i++){
+        float x = points[i][0];
+        float y = points[i][1];
+        float z = points[i][2];
+
+        float D = 1 / (z + K);
+        int x2D = (int)(x * D * 10);
+        int y2D = (int)(y * D * 10);
+
+        int xScreen = C_X + x2D;
+        int yScreen = C_Y - y2D;
+
+        if (xScreen >= 0 && xScreen < WIDTH && yScreen >= 0 && yScreen < HEIGHT) {
+            buffer[yScreen][xScreen] = '*';
+        }
+    }
     
 }
 
