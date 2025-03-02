@@ -52,6 +52,19 @@ int main(void){
         {2,1,3},
         {2,2,3}
     };    
+    /*visualization by gpt:
+           (x, y, z) coordinates
+
+       (1,2,3)   (2,2,3)
+         *--------*
+         |        |
+         |        |
+         *--------*
+       (1,1,3)   (2,1,3)
+
+    */
+
+
      //simply project each point & place in buffer
     for (int i=0;i<4;i++){
         float x = points[i][0];
