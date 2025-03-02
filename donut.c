@@ -12,8 +12,9 @@
 /*
     ->simply put, our axes in a computer are different then in math
       so its starts from top-right corner(origin),
-    ->k is a  perspective constant
-      fancy word for depth of field(perceived)
+    ->k is a  perspective scaling constant
+      fancy word for depth of field(perceived),
+      so we avoid division by zero.
     ->it doesn't need to be 3.0 
       1.0 =big & close;
       5.0 =small & far;
@@ -47,26 +48,21 @@ int main(void){
     clr(buffer);
      //our 3D points
      float points[4][3]= {
+        {-1,-1,3},
         {1,1,3},
-        {1,2,3},
-        {2,1,3},
-        {2,2,3}
+        {0,1,3},
+    
     };    
-    /*visualization by gpt:
-           (x, y, z) coordinates
-
+    /*visualization (x, y, z) coordinates by gpt: 
        (1,2,3)   (2,2,3)
          *--------*
          |        |
          |        |
          *--------*
        (1,1,3)   (2,1,3)
-
     */
-
-
      //simply project each point & place in buffer
-    for (int i=0;i<4;i++){
+    for (int i=0;i<3;i++){
         float x = points[i][0];
         float y = points[i][1];
         float z = points[i][2];
